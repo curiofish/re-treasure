@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>재활용 과정 - Re:Treasure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 10px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: 1px;
+        }
+
+        .main {
+            margin-top: 80px;
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .main-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #27ae60;
+        }
+
+        .main-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-title p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: #27ae60;
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .process-content {
+            width: 45%;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .process-step:nth-child(odd) .process-content {
+            margin-right: 55%;
+        }
+
+        .process-step:nth-child(even) .process-content {
+            margin-left: 55%;
+        }
+
+        .process-content h3 {
+            color: #27ae60;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .process-content .step-number {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .process-step:nth-child(odd) .step-number {
+            right: -65px;
+        }
+
+        .process-step:nth-child(even) .step-number {
+            left: -65px;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-info p {
+            margin: 0;
+            color: #ecf0f1;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-step {
+                margin-left: 30px;
+            }
+
+            .process-content {
+                width: calc(100% - 60px) !important;
+                margin: 0 !important;
+                margin-left: 30px !important;
+            }
+
+            .step-number {
+                left: -45px !important;
+                right: auto !important;
+            }
+
+            .main-title h1 {
+                font-size: 2rem;
+            }
+
+            .main-title p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: white;
+                padding: 80px 40px;
+                flex-direction: column;
+                gap: 2rem;
+                transition: right 0.3s ease-in-out;
+            }
+
+            .nav-menu.active {
+                display: flex;
+                right: 0;
+            }
+
+            .menu-toggle.active span:first-child {
+                transform: rotate(45deg);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:last-child {
+                transform: rotate(-45deg);
+            }
+
+            .nav-menu a {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .process-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .process-content p {
+                font-size: 0.95rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .footer-info p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .process-timeline {
+                padding: 1rem 0;
+            }
+
+            .process-content {
+                padding: 1.5rem;
+            }
+
+            .main-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav-menu {
+                gap: 0.8rem;
+            }
+
+            .nav-menu a {
+                font-size: 0.85rem;
+            }
+
+            .footer {
+                padding: 1.5rem 0;
+            }
+
+            .footer-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Re:Treasure</a>
+            <button class="menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu">
+                <a href="guide.html">분리배출 가이드</a>
+                <a href="recycle-process.html">재활용 과정</a>
+                <a href="qa.html">자주 묻는 질문</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="main-title">
+                <h1>재활용 과정</h1>
+                <p>우리가 분리배출한 자원이 새로운 제품으로 탄생하기까지</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="step-number">1</div>
+                        <h3>수거</h3>
+                        <p>각 가정과 사업장에서 분리배출된 재활용품을 수거차량이 수거합니다.</p>
+                        <p>올바른 분리배출은 재활용 과정의 첫 걸음입니다.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="step-number">2</div>
+                        <h3>선별</h3>
+                        <p>재활용품 선별장에서 재질별로 분류하고 이물질을 제거합니다.</p>
+                        <p>재활용이 불가능한 물품은 별도로 처리됩니다.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="step-number">3</div>
+                        <h3>가공</h3>
+                        <p>분류된 재활용품을 세척하고 파쇄, 압축 등의 과정을 거쳐 원료화합니다.</p>
+                        <p>이 과정에서 재활용품은 새로운 제품의 원료가 됩니다.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="step-number">4</div>
+                        <h3>제품화</h3>
+                        <p>가공된 원료를 이용해 새로운 제품을 만듭니다.</p>
+                        <p>재활용 원료로 만든 제품은 환경보호에 기여합니다.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-content">
+                        <div class="step-number">5</div>
+                        <h3>유통</h3>
+                        <p>완성된 재활용 제품이 시장에 유통됩니다.</p>
+                        <p>소비자의 재활용 제품 선택이 자원순환을 완성합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>&copy; 2024 Re:Treasure. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+                <a href="terms.html">이용약관</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // 메뉴 항목 클릭시 메뉴 닫기
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자주 묻는 질문 - Re:Treasure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 10px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: white;
+                padding: 80px 40px;
+                flex-direction: column;
+                gap: 2rem;
+                transition: right 0.3s ease-in-out;
+            }
+
+            .nav-menu.active {
+                display: flex;
+                right: 0;
+            }
+
+            .menu-toggle.active span:first-child {
+                transform: rotate(45deg);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:last-child {
+                transform: rotate(-45deg);
+            }
+
+            .nav-menu a {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .qa-list {
+                padding: 0 1rem;
+            }
+
+            .qa-item {
+                padding: 1.5rem;
+            }
+
+            .qa-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .qa-item p {
+                font-size: 0.95rem;
+            }
+        }
+
+        .main {
+            margin-top: 80px;
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .main-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #27ae60;
+        }
+
+        .main-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-title p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .qa-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .qa-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .qa-item h3 {
+            color: #27ae60;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .qa-item h3::before {
+            content: 'Q';
+            background-color: #27ae60;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .qa-item p {
+            color: #666;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .qa-item p::before {
+            content: 'A';
+            position: absolute;
+            left: 0;
+            background-color: #e74c3c;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-info p {
+            margin: 0;
+            color: #ecf0f1;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Re:Treasure</a>
+            <button class="menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu">
+                <a href="guide.html">분리배출 가이드</a>
+                <a href="recycle-process.html">재활용 과정</a>
+                <a href="qa.html">자주 묻는 질문</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="main-title">
+                <h1>자주 묻는 질문</h1>
+                <p>재활용에 대한 궁금증을 해결해드립니다</p>
+            </div>
+
+            <div class="qa-list">
+                <div class="qa-item">
+                    <h3>재활용품은 왜 깨끗이 씻어서 버려야 하나요?</h3>
+                    <p>이물질이 묻은 재활용품은 재활용 과정에서 품질을 저하시키고, 때로는 전체 재활용품을 오염시켜 재활용이 불가능하게 만들 수 있습니다. 깨끗한 상태로 배출하면 고품질의 재활용이 가능합니다.</p>
+                </div>
+
+                <div class="qa-item">
+                    <h3>플라스틱 용기의 라벨은 꼭 제거해야 하나요?</h3>
+                    <p>네, 라벨을 제거하는 것이 좋습니다. 라벨은 대부분 다른 재질로 만들어져 있어 재활용 과정에서 분리가 필요합니다. 라벨을 미리 제거하면 재활용 효율이 높아집니다.</p>
+                </div>
+
+                <div class="qa-item">
+                    <h3>종이류는 어떻게 분리배출해야 하나요?</h3>
+                    <p>종이류는 물기에 젖지 않도록 하고, 스테이플러 침이나 테이프 등 이물질을 제거한 후 배출해야 합니다. 책자, 노트, 상자 등은 펼쳐서 배출하면 수거가 용이합니다.</p>
+                </div>
+
+                <div class="qa-item">
+                    <h3>재활용이 안 되는 플라스틱은 어떤 것인가요?</h3>
+                    <p>음식물이나 기름이 많이 묻은 플라스틱, 복합 재질로 만들어진 제품(예: CD, 장난감), 일회용 그릇 등은 재활용이 어렵습니다. 이러한 제품들은 일반 쓰레기로 배출해야 합니다.</p>
+                </div>
+
+                <div class="qa-item">
+                    <h3>스티로폼은 어떻게 배출해야 하나요?</h3>
+                    <p>스티로폼은 이물질(테이프, 운송장 등)을 제거하고 깨끗이 씻은 후 배출합니다. 색이 있는 스티로폼이나 오염된 스티로폼은 재활용이 불가능하므로 일반 쓰레기로 배출해야 합니다.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>&copy; 2024 Re:Treasure. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+                <a href="terms.html">이용약관</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // 메뉴 항목 클릭시 메뉴 닫기
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html> 

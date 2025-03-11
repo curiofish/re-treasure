@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보처리방침 - Re:Treasure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 10px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: 1px;
+        }
+
+        .main {
+            margin-top: 80px;
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .main-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #27ae60;
+        }
+
+        .main-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-title p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .privacy-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .privacy-section h2 {
+            color: #27ae60;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e8f5e9;
+        }
+
+        .privacy-section p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .privacy-section ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .privacy-section li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #666;
+        }
+
+        .privacy-section li::before {
+            content: "•";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-info p {
+            margin: 0;
+            color: #ecf0f1;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: white;
+                padding: 80px 40px;
+                flex-direction: column;
+                gap: 2rem;
+                transition: right 0.3s ease-in-out;
+            }
+
+            .nav-menu.active {
+                display: flex;
+                right: 0;
+            }
+
+            .menu-toggle.active span:first-child {
+                transform: rotate(45deg);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:last-child {
+                transform: rotate(-45deg);
+            }
+
+            .nav-menu a {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .main-title h1 {
+                font-size: 2rem;
+            }
+
+            .main-title p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .privacy-section {
+                padding: 1.5rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .footer-info p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .privacy-section {
+                padding: 1.2rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .privacy-section p {
+                font-size: 0.95rem;
+            }
+
+            .footer {
+                padding: 1.5rem 0;
+            }
+
+            .footer-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">Re:Treasure</a>
+            <button class="menu-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu">
+                <a href="guide.html">분리배출 가이드</a>
+                <a href="recycle-process.html">재활용 과정</a>
+                <a href="qa.html">자주 묻는 질문</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="main-title">
+                <h1>개인정보처리방침</h1>
+                <p>Re:Treasure의 개인정보 보호정책</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>개인정보 수집 및 이용 목적</h2>
+                <p>Re:Treasure는 다음의 목적을 위해 최소한의 개인정보를 수집하고 있습니다:</p>
+                <ul>
+                    <li>서비스 제공 및 운영</li>
+                    <li>이용자 식별 및 본인 확인</li>
+                    <li>불만처리 등 민원처리</li>
+                    <li>새로운 서비스 및 이벤트 정보 안내</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>수집하는 개인정보 항목</h2>
+                <p>Re:Treasure는 회원가입 및 서비스 이용 과정에서 다음과 같은 개인정보를 수집합니다:</p>
+                <ul>
+                    <li>필수항목: 이메일 주소, 비밀번호</li>
+                    <li>선택항목: 이름, 프로필 이미지</li>
+                    <li>자동수집항목: 접속 IP, 쿠키, 방문 일시</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>개인정보의 보유 및 이용기간</h2>
+                <p>이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용목적이 달성되면 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다:</p>
+                <ul>
+                    <li>회원 가입 및 관리 기록: 회원 탈퇴 시까지</li>
+                    <li>방문 기록: 3개월</li>
+                    <li>법령에 따른 보관 의무 기록: 관련 법령에서 정한 기간</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>개인정보의 파기절차 및 방법</h2>
+                <p>Re:Treasure는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다. 전자적 파일 형태의 정보는 기술적 방법을 사용하여 안전하게 삭제하며, 종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>&copy; 2024 Re:Treasure. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+                <a href="terms.html">이용약관</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html> 
