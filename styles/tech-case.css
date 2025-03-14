@@ -1,0 +1,276 @@
+/* 사례 상세 페이지 스타일 */
+.case-detail {
+    padding-top: 80px;
+}
+
+.case-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 60px 0;
+    margin-bottom: 40px;
+}
+
+.case-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.case-header .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.case-content {
+    float: left;
+    width: 70%;
+    padding-right: 40px;
+}
+
+.case-sidebar {
+    float: right;
+    width: 30%;
+}
+
+.case-image {
+    margin-bottom: 30px;
+}
+
+.case-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.case-section {
+    margin-bottom: 40px;
+}
+
+.case-section h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.feature-list i {
+    font-size: 1.5rem;
+    color: #2ecc71;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.feature-list h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.feature-list p {
+    margin: 0;
+    color: #666;
+}
+
+.case-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.example {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.example h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.example p {
+    color: #666;
+    margin: 0;
+}
+
+.effects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.effect {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.effect i {
+    font-size: 2rem;
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+.effect h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.effect p {
+    color: #666;
+    margin: 0;
+}
+
+.implementation-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.step {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background: #2ecc71;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.step p {
+    color: #666;
+    margin: 0;
+}
+
+.sidebar-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.sidebar-section h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.spec-list {
+    list-style: none;
+    padding: 0;
+}
+
+.spec-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.spec-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    background: #2ecc71;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: #27ae60;
+}
+
+.contact-btn i {
+    margin-right: 8px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 992px) {
+    .case-content,
+    .case-sidebar {
+        float: none;
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .case-sidebar {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .case-header {
+        padding: 40px 0;
+    }
+
+    .case-header h1 {
+        font-size: 2rem;
+    }
+
+    .case-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .feature-list li {
+        padding: 15px;
+    }
+
+    .effects-grid,
+    .implementation-steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 컨테이너 클리어픽스 */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+} 
