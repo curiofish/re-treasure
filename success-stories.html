@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세계 성공사례 | Re:Treasure</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/article.css">
+</head>
+<body>
+    <!-- header include -->
+    <div data-include-path="components/header.html"></div>
+
+    <main class="success-stories-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>세계의 재활용 성공사례</h1>
+                <p class="subtitle">전 세계의 혁신적인 재활용 사례를 통해 지속 가능한 미래를 그립니다</p>
+            </div>
+
+            <div class="stories-grid">
+                <article class="story-card">
+                    <div class="story-image">
+                        <img src="images/sweden-recycling.jpg" alt="스웨덴의 재활용 시설">
+                        <span class="story-country">스웨덴</span>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-meta">
+                            <span>2024년 3월 업데이트</span>
+                        </div>
+                        <h2>스웨덴의 재활용 혁명, 매립 쓰레기 1% 미만 달성</h2>
+                        <p>스웨덴은 혁신적인 재활용 정책과 시스템을 통해 쓰레기 매립률을 1% 미만으로 줄이는데 성공했습니다.</p>
+                        <div class="story-stats">
+                            <span class="stat">재활용률 99%</span>
+                            <span class="stat">연간 23.6 TWh 에너지 생산</span>
+                        </div>
+                        <a href="success-stories/sweden.html" class="read-more">자세히 보기 →</a>
+                    </div>
+                </article>
+
+                <article class="story-card">
+                    <div class="story-image">
+                        <img src="images/germany-recycling.jpg" alt="독일의 Pfand 시스템">
+                        <span class="story-country">독일</span>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-meta">
+                            <span>2024년 3월 업데이트</span>
+                        </div>
+                        <h2>독일의 'Pfand' 제도로 페트병 회수율 98% 달성</h2>
+                        <p>독일의 보증금 제도는 연간 167억 개의 용기를 회수하며 세계적인 성공 사례로 자리잡았습니다.</p>
+                        <div class="story-stats">
+                            <span class="stat">회수율 98%</span>
+                            <span class="stat">CO2 감축 28만톤</span>
+                        </div>
+                        <a href="success-stories/germany.html" class="read-more">자세히 보기 →</a>
+                    </div>
+                </article>
+
+                <article class="story-card">
+                    <div class="story-image">
+                        <img src="images/japan-recycling.jpg" alt="일본의 AI 재활용 시스템">
+                        <span class="story-country">일본</span>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-meta">
+                            <span>2024년 3월 업데이트</span>
+                        </div>
+                        <h2>AI 기술로 재활용 효율 40% 향상한 일본</h2>
+                        <p>일본은 AI 기반 자동 분리수거 시스템을 도입하여 재활용 효율을 획기적으로 개선했습니다.</p>
+                        <div class="story-stats">
+                            <span class="stat">효율 40% 향상</span>
+                            <span class="stat">정확도 99.9%</span>
+                        </div>
+                        <a href="success-stories/japan.html" class="read-more">자세히 보기 →</a>
+                    </div>
+                </article>
+
+                <article class="story-card">
+                    <div class="story-image">
+                        <img src="images/netherlands-recycling.jpg" alt="네덜란드의 플라스틱 도로">
+                        <span class="story-country">네덜란드</span>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-meta">
+                            <span>2024년 3월 업데이트</span>
+                        </div>
+                        <h2>재활용 플라스틱으로 만든 도로 2,000km 달성</h2>
+                        <p>네덜란드는 재활용 플라스틱을 활용한 혁신적인 도로 건설로 새로운 재활용 방안을 제시했습니다.</p>
+                        <div class="story-stats">
+                            <span class="stat">수명 50년</span>
+                            <span class="stat">CO2 70% 감축</span>
+                        </div>
+                        <a href="success-stories/netherlands.html" class="read-more">자세히 보기 →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer include -->
+    <div data-include-path="components/footer.html"></div>
+
+    <!-- Include Handler Script -->
+    <script>
+        window.addEventListener('load', function() {
+            const includes = document.querySelectorAll('[data-include-path]');
+            includes.forEach(include => {
+                const filePath = include.getAttribute('data-include-path');
+                fetch(filePath)
+                    .then(response => response.text())
+                    .then(data => {
+                        include.innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading the include file:', error));
+            });
+        });
+    </script>
+</body>
+</html> 

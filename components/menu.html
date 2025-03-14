@@ -1,0 +1,36 @@
+<!-- 공통 네비게이션 메뉴 -->
+<header class="header">
+    <div class="header-container">
+        <a href="/" class="logo">Re:Treasure</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu">
+            <a href="/guide.html">분리배출 가이드</a>
+            <a href="/success-stories/index.html">세계 성공사례</a>
+        </nav>
+    </div>
+</header>
+
+<!-- 메뉴 토글 스크립트 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // 메뉴 항목 클릭시 메뉴 닫기
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+});
+</script> 
